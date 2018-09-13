@@ -1,0 +1,10 @@
+<core:View
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core" >
+
+
+  <MessagePage showHeader="false" icon="sap-icon://activity-items" text="No Items are Currently Available" description="">
+
+	</MessagePage>
+  
+</core:View>

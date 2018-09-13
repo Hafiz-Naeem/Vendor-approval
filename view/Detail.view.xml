@@ -1,0 +1,139 @@
+<core:View
+  controllerName="com.tallymarks.trkso.view.Detail"
+  xmlns="sap.m"
+	xmlns:u="sap.ui.unified"
+  xmlns:form="sap.ui.layout.form"
+  xmlns:layout="sap.ui.layout"
+  xmlns:core="sap.ui.core" >
+  
+  <Page
+    title="Purchase Order"
+    class="sapUiFioriObjectPage"
+     showNavButton= "true"
+    navButtonPress="handleNavButtonPress" >
+    
+    <ObjectHeader
+      title="{Detail>/name}"
+      titleActive="true"
+      number="{Detail>/salary}"
+      numberUnit="{Detail>/currency}">
+
+   <statuses>
+			<ObjectStatus
+				text="{Detail>/day}"/>
+		</statuses>
+        <attributes>
+        <ObjectAttribute text="{Detail>/vendor name}" active="true"/>
+        </attributes>
+    </ObjectHeader>
+
+
+<IconTabBar>
+<items>
+
+      <IconTabFilter icon="sap-icon://hint">
+<form:SimpleForm
+        minWidth="1024" class="sapUiSmallMarginTop" >
+
+        <Label text="Purchase Order"/>
+        <Text text="{Detail>/detail/0/Purchase Order}" />
+
+        <Label text="Account Assignment"/>
+        <Text text="{Detail>/detail/0/Account Assignment}" />
+
+        <Label text="Delivery Date"/>
+        <Text text="{Detail>/detail/0/Delivery Date}" />
+
+  
+        <Label text="Plant"/>
+        <Text text="{Detail>/detail/0/Plant}" />
+
+        <Label text="Incoterms"/>
+        <Text text="{Detail>/detail/0/Incoterms}" />
+
+        <Label text="Company Code"/>
+        <Text text="{Detail>/detail/0/Company Code}" />
+      </form:SimpleForm>
+
+      </IconTabFilter>
+
+
+
+<IconTabFilter icon="sap-icon://notes">
+
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{Detail>/name}" subheader="{Detail>/vendor name}" >
+		<TileContent  footer="{Detail>/detail/0/Delivery Date}">
+			<ImageContent src="sap-icon://home-share" />
+		</TileContent>
+	</GenericTile>
+
+
+<TileContent class="sapUiSmallMargin">
+		<content>
+			<NewsContent
+				contentText="{Detail>/product}"
+				subheader="{Detail>/Quantity}">
+			</NewsContent>
+		</content>
+	</TileContent>
+
+ </IconTabFilter>
+
+      </items>
+    </IconTabBar>
+
+<Table id="itemTable" items="{Detail>/mdet}"  headerText="Items ">
+
+<columns>
+
+<Column >
+<header>
+<Label text="Description"  />
+</header>
+</Column>
+
+<Column >
+<header>
+<Label text="Item Category" width="100%"/>
+</header>
+</Column>
+
+<Column >
+<header>
+<Label text="Quantity	"/>
+</header>
+</Column>
+
+<Column >
+<header>
+<Label text="Subtotal	"/>
+</header>
+</Column>
+
+</columns>
+
+<ColumnListItem press="handleLineItemPress" type="Navigation">
+<cells>
+  <ObjectIdentifier
+
+      title="{Detail>product}"/>
+<Text text="{Detail>/Item Category}"/>
+<Text text="{Detail>/Quantity}"/>
+ <ObjectIdentifier
+      title="{Detail>/salary}" text="{Detail>/currency}"/>
+
+
+</cells>
+</ColumnListItem>
+</Table>
+
+    
+    <footer>
+ 		  	<Toolbar>
+				<ToolbarSpacer/>
+				<Button text = "Accept" type = "Accept" />
+				<Button text = "Reject" type = "Reject" />
+			</Toolbar>
+    </footer>
+  </Page>
+</core:View>

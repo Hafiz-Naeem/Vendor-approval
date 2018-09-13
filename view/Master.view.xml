@@ -1,0 +1,66 @@
+<core:View
+  controllerName="com.tallymarks.trkso.view.Master"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core" >
+  <Page
+    title="Purchase Orders"
+    >
+    <subHeader>
+      <Bar>
+        <contentLeft>
+          <SearchField
+            search="handleSearch"
+            width="100%" >
+          </SearchField>
+        </contentLeft>
+      </Bar>
+    </subHeader>
+
+
+    <List
+      id="list"
+      mode="{device>/listMode}"
+      select="handleListSelect"
+      items="{/Header}"
+       >
+      <ObjectListItem
+        type="Active"
+        press="handleListItemPress"
+        title="{name}"
+        number="{salary}"
+        numberUnit="{currency}"
+         >
+        <attributes>
+        <ObjectAttribute text="{product}" />
+         <ObjectAttribute text="{vendor name}" />
+          <ObjectAttribute text="" />
+        </attributes>
+          <firstStatus>
+          <ObjectStatus text="{day}" state="{
+            path :'currency',
+            formatter : 'com.tallymarks.trkso.util.Formatter.currency'
+          }"/>
+          </firstStatus>
+        
+      </ObjectListItem>
+    </List>
+    <footer>
+     <Toolbar>
+        <ToolbarSpacer/>
+        <Select
+        id="filterStatus"
+        change="handleFilterChangeStatus"
+        icon="sap-icon://filter"
+        type="IconOnly"
+        autoAdjustWidth="true">
+        <items>
+        <core:Item text="All Sale Orders" key="1" />
+        <core:Item text="Open" key="A" />
+        <core:Item text="In Process" key="B" />
+        <core:Item text="Complete" key="C" />
+        </items>
+      </Select>
+       </Toolbar>
+    </footer>
+  </Page>
+</core:View>

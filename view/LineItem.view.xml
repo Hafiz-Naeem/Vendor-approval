@@ -1,0 +1,102 @@
+<core:View
+  controllerName="com.tallymarks.trkso.view.LineItem"
+  xmlns="sap.m"
+  xmlns:form="sap.ui.layout.form"
+  
+  xmlns:layout="sap.ui.layout"
+  xmlns:core="sap.ui.core" >
+  <Page
+    id="page"
+    title="Item Detail"
+    showNavButton= "true"
+    navButtonPress="handleNavBack" >
+    <footer>
+      <Bar>
+      </Bar>
+    </footer>
+    <content>
+
+
+     <ObjectHeader
+      title="{LineItem>/product}"
+    
+      number="{Detail>/salary}"
+      numberUnit="{Detail>/currency}">
+
+  
+        <attributes>
+        <ObjectAttribute text="{LineItem>/Quantity}" />
+         <ObjectAttribute text="{LineItem>/Item Category}"/>
+        </attributes>
+    </ObjectHeader>
+
+
+
+      <form:SimpleForm
+        minWidth="1024" class="sapUiSmallMarginTop" title="Information">
+        <Label text="Material ."/>
+        <Text text="{LineItem>/Material}" />
+        <Label text="Material Group"/>
+        <Text text="{LineItem>/Material Group}" />
+      </form:SimpleForm>
+
+
+      <form:SimpleForm
+        minWidth="1024" class="sapUiSmallMarginTop" title="{Detail>/detail/0/Delivery Date}">
+        <Label text="Plant"/>
+        <Text text="{Detail>/detail/0/Plant}" />
+    
+        <Label text="Address"/>
+        <Text text="{Detail>/detail/0/Address}" />
+     
+      </form:SimpleForm>
+
+       <form:SimpleForm
+        minWidth="1024" class="sapUiSmallMarginTop" title="Notes">
+    
+      </form:SimpleForm>
+
+
+
+
+    <Table id="itemTable"   headerText="Items(1) ">
+
+<columns>
+
+<Column>  <header>
+<Label text="Description"/></header>
+</Column>
+
+<Column> <header>
+<Label text="Item Category" /></header>
+</Column>
+
+<Column > <header>
+<Label text="Quantity	"/></header>
+</Column>
+
+<Column>  <header>
+<Label text="Subtotal	"/></header>
+</Column>
+
+</columns>
+
+<ColumnListItem press="handleLineItemPress" type="Navigation">
+<cells>
+  <ObjectIdentifier
+
+      title="{LineItem>/product}"/>
+<Text text="{LineItem>/Item Category}"/>
+<Text text="{LineItem>/Quantity}"/>
+ <ObjectIdentifier
+      title="{LineItem>/salary}" text="{LineItem>/currency}"/>
+
+
+</cells>
+</ColumnListItem>
+</Table>
+         
+    
+    </content>
+  </Page>
+</core:View>
